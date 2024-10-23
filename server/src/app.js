@@ -8,6 +8,8 @@ const AddBillingDetails = require("./controllers/AddBillingDetails.js");
 const SearchPatients = require("./controllers/SearchPatients.js");
 const GetPatientDetails = require("./controllers/GetPatientDetails.js");
 const AddTransaction = require("./controllers/AddTransaction.js");
+const DischargePatient = require("./controllers/DischargePatient.js");
+const Logout = require("./controllers/Logout.js");
 app.use(express.json());
 
 const corsOption = {
@@ -22,5 +24,6 @@ app.post("/add-bill", Verification, AddBillingDetails);
 app.get("/search-patient", Verification, SearchPatients);
 app.get("/patient-details", Verification, GetPatientDetails);
 app.put("/add-amount", Verification, AddTransaction);
-
+app.put("/discharge", Verification, DischargePatient);
+app.put("/logout", Logout);
 module.exports = app;

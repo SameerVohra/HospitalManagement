@@ -32,6 +32,8 @@ function Login() {
           setEmail("");
           localStorage.setItem("token", data.data.token);
           localStorage.setItem("email", data.data.emailId);
+          localStorage.setItem("deviceId", data.data.deviceId)
+
           navigate("/home")
         }
       } catch (error) {

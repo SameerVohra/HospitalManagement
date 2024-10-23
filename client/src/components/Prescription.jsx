@@ -27,7 +27,8 @@ function Prescription({ uhid }) {
   const [admitDate, setAdmitDate] = useState();
   const [admitTime, setAdmitTime] = useState();
   const [billNo, setBillNo] = useState();
-
+  const [discharge_date, setDischarge_date] = useState();
+  const [discharge_time, setDischarge_time] = useState();
 
   const contentRef = useRef();
   const handlePrint = useReactToPrint({contentRef});
@@ -90,6 +91,8 @@ const formatDate = (dateString) => {
         setAmtPayed(patient.amt_payed || 0);
         setDisc(patient.discount || 0);
         setBillDetails(patient.bill_details || []);
+        setDischarge_date(patient.discharge_date || null);
+        setDischarge_time(patient.discharge_time || null);
 
         const totalGross = patient.bill_details.reduce((total, category) => {
           const subTotal = category.subcategories.reduce(
@@ -110,6 +113,7 @@ const formatDate = (dateString) => {
 
     fetchBillDetails();
   });
+
 
   return (
     <>
@@ -148,6 +152,16 @@ const formatDate = (dateString) => {
             <p className="text-lg">
               <span className="font-semibold">Consultant:</span> {conDoc}
             </p>
+            {discharge_date && discharge_time && (
+              <>
+                <p className="text-lg">
+                  <span className="font-semibold">Discharge Date:</span> {formatDate(discharge_date)}
+                </p>
+                <p className="text-lg">
+                  <span className="font-semibold">Discharge Time:</span> {discharge_time}
+                </p>
+              </>
+            )}
           </div>
 
           {/* Right Column */}

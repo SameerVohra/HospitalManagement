@@ -28,7 +28,7 @@ const Login = async(req, res) => {
     const token = jwt.sign({emailId: emailId, deviceId: deviceId}, process.env.SECRET_KEY, {expiresIn: "24H"});
     admin.session.push(deviceId);
     await admin.save();
-    res.status(201).json({emailId: emailId, token: token});
+    res.status(201).json({emailId: emailId, token: token, deviceId: deviceId});
   } catch (error) {
     console.log(error)
     res.status(501).send("Internal Server Error");
