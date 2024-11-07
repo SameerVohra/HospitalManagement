@@ -31,9 +31,21 @@ function Prescription({ uhid }) {
   const [discharge_time, setDischarge_time] = useState();
 
   const contentRef = useRef();
-  const handlePrint = useReactToPrint({contentRef});
+  const handlePrint = useReactToPrint({contentRef, 
+    onAfterPrint: ()=>{
+      const now = new Date();
+      update_pres_date(formatDate(now));
+    }
+  });
 
-
+  const update_pres_date = async(date) => {
+    const token = localStorage.getItem("token");
+    await axios.patch(`${link.url}/update-date`, {
+      uhid_number: uhid,
+      updated_date: date,
+    }, {headers: {Authorization: `Bearer ${token}`}})
+  }
+ 
 const formatDate = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);

@@ -24,7 +24,7 @@ const AddPatient = async(req, res) => {
       }
     }
     const newPatient = new Patient({
-      name, guardian_name, age, gender, address, mobile_number, consultant_doctor, bill_number, uhid_number, ipd_number, room_number, room_category, patient_status, bill_date, admit_date, admit_time, discharge_date, discharge_time, amt_payed, discount
+      name, guardian_name, age, gender, address, mobile_number, consultant_doctor, bill_number, uhid_number, ipd_number, room_number, room_category, patient_status, bill_date, admit_date, admit_time, discharge_date, discharge_time, amt_payed, discount, last_printed_pres: ""
     })
     await newPatient.save();
     res.status(201).json({uhid_number, bill_number});

@@ -8,6 +8,7 @@ import PatientDetails from "./components/PatientDetails.jsx"
 import AddPatient from './components/AddPatient.jsx';
 import EditPatient from './components/EditPatient.jsx'
 import DischargePatient from './components/DischargePatient.jsx'
+import GetPrintedPres from './components/GetPrintedPres.jsx'
 
 const route = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const route = createBrowserRouter([
       {
         path: "discharge",
         element: <DischargePatient/>
+      },
+      {
+        path: "get-prescriptions",
+        element: <GetPrintedPres/>
       }
     ]
   }

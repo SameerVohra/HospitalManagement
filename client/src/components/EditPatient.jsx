@@ -212,12 +212,14 @@ function InputField({ label, value, onChange, placeholder }) {
   );
 }
 
+
 function ActionButton({ label, icon, color, onClick, disabled }) {
+  const isAddBillButton = label === "Add Bill";
+  const bgColor = disabled ? 'bg-gray-400 cursor-not-allowed' : isAddBillButton ? 'bg-blue-500 hover:bg-blue-600 text-white' : `bg-${color}-500 hover:bg-${color}-600 text-white`;
+  
   return (
     <button
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-md transition-all ${
-        disabled ? 'bg-gray-400 cursor-not-allowed' : `bg-${color}-500 hover:bg-${color}-600 text-white`
-      }`}
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-md transition-all ${bgColor}`}
       onClick={onClick}
       disabled={disabled}
     >
@@ -239,7 +241,7 @@ function FormButton({ label, color }) {
   return (
     <button
       type="submit"
-      className={`w-full bg-${color}-600 text-white py-3 rounded-lg font-semibold shadow-md hover:bg-${color}-700 transition-all`}
+      className={`w-full bg-blue-600 text-white py-3 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition-all`}
     >
       {label}
     </button>

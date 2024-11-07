@@ -58,6 +58,10 @@ function Home() {
             >
               Discharge Patient
             </button>
+            <button className='px-4 py-2 rounded-full bg-cyan-300 hover:bg-blue-500 transition-all shadow-lg font-semibold'
+              onClick={() => navigate('/get-prescriptions')}>
+              Get Prescriptions
+            </button>
           </div>
           <button
             onClick={handleLogout}

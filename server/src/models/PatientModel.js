@@ -39,6 +39,7 @@ const PatientModel = new mongoose.Schema({
   bill_details: [BillingModel],
   amt_payed: Number,
   discount: Number,
+  last_printed_pres: String,
 });
 
 const Patient = mongoose.model("Patient", PatientModel);
